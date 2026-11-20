@@ -1,3 +1,4 @@
+from ai_assistant.prompts.system_prompt import SYSTEM_PROMPT
 import os
 from dotenv import load_dotenv
 from google import genai
@@ -16,19 +17,26 @@ MODEL_NAME = "gemini-3.5-flash-lite"
 
 def generate_response(prompt: str) -> str:
     """
-    Send a prompt to Gemini and return the generated text.
+    Generate a LifeLink AI response using Gemini.
     """
+
+    full_prompt = f"""
+{SYSTEM_PROMPT}
+
+USER MESSAGE:
+{prompt}
+"""
 
     try:
         response = client.models.generate_content(
             model=MODEL_NAME,
-            contents=prompt,
+            contents=full_prompt,
         )
 
         if response.text:
             return response.text.strip()
 
-        return "The AI returned an empty response."
+        return "I'm sorry, I couldn't generate a response."
 
     except Exception as e:
         print(f"Gemini API Error: {e}")
