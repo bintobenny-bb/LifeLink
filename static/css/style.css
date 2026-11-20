@@ -1,0 +1,527 @@
+/* ========================================
+   LIFELINK - GLOBAL STYLES
+======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #d62839;
+    --primary-dark: #ad1728;
+    --dark: #17212f;
+    --text: #505b69;
+    --light: #fff7f7;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--dark);
+    background: var(--white);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ========================================
+   NAVIGATION BAR
+======================================== */
+
+.navbar {
+    width: 100%;
+    min-height: 82px;
+    padding: 0 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--white);
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.04);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 29px;
+    font-weight: 800;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--primary);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.login-btn {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.register-btn,
+.primary-btn,
+.cta-btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 13px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.register-btn:hover,
+.primary-btn:hover,
+.cta-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   HERO SECTION
+======================================== */
+
+.hero {
+    min-height: 620px;
+    padding: 85px 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    background:
+        radial-gradient(circle at 85% 40%, #ffe5e7 0%, transparent 34%),
+        linear-gradient(120deg, #fffafa, #ffffff);
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 590px;
+}
+
+.hero-label {
+    display: inline-block;
+    color: var(--primary);
+    background: #ffe8ea;
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(45px, 5.5vw, 70px);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+    display: block;
+}
+
+.hero-content>p {
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.9;
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.primary-btn {
+    padding: 15px 25px;
+}
+
+.secondary-btn {
+    display: inline-block;
+    padding: 14px 25px;
+    border: 1.5px solid #e0d5d5;
+    color: var(--dark);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.secondary-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.hero-note {
+    margin-top: 28px;
+    color: #7b8490;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* HERO VISUAL */
+
+.hero-image {
+    flex: 1;
+    min-height: 380px;
+    max-width: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(circle, #ffd7dc 0%, #ffecef 48%, transparent 70%);
+    border-radius: 50%;
+}
+
+.image-card {
+    width: 310px;
+    min-height: 310px;
+    border-radius: 28px;
+    background: white;
+    box-shadow: 0 25px 65px rgba(120, 30, 45, 0.13);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    transform: rotate(-3deg);
+}
+
+.blood-icon {
+    width: 75px;
+    height: 75px;
+    background: #ffe5e8;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.image-card h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 27px;
+    line-height: 1.2;
+}
+
+.image-card p {
+    margin-top: 15px;
+    color: var(--text);
+    font-size: 13px;
+}
+
+/* ========================================
+   ABOUT SECTION
+======================================== */
+
+.about {
+    padding: 95px 10%;
+    text-align: center;
+}
+
+.section-heading {
+    max-width: 720px;
+    margin: auto;
+    text-align: center;
+}
+
+.section-heading>span {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 38px;
+    margin: 13px 0;
+}
+
+.section-heading p {
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* ========================================
+   HOW IT WORKS
+======================================== */
+
+.how-it-works {
+    padding: 90px 9%;
+    background: #fff8f8;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 55px;
+}
+
+.step-card {
+    background: white;
+    padding: 35px 30px;
+    border: 1px solid #f1e5e5;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.step-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(80, 20, 30, 0.08);
+}
+
+.step-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #ffe8ea;
+    color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    margin-bottom: 22px;
+}
+
+.step-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.step-card p {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ========================================
+   CALL TO ACTION
+======================================== */
+
+.cta {
+    margin: 85px 9%;
+    padding: 65px 25px;
+    text-align: center;
+    border-radius: 20px;
+    background: linear-gradient(120deg, #bd172b, #e83c4c);
+    color: white;
+}
+
+.cta h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.cta p {
+    color: #ffe6e8;
+    margin-bottom: 25px;
+}
+
+.cta-btn {
+    background: white;
+    color: var(--primary);
+}
+
+.cta-btn:hover {
+    background: #fff0f1;
+    color: var(--primary-dark);
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer {
+    padding: 40px 8%;
+    background: var(--dark);
+    color: white;
+    text-align: center;
+}
+
+.footer .logo {
+    color: white;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.footer p {
+    color: #c3cbd5;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        padding: 15px 5%;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .hero {
+        padding: 70px 6%;
+    }
+
+    .hero-image {
+        max-width: 380px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .nav-actions {
+        gap: 10px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 65px 7%;
+    }
+
+    .hero-content>p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image {
+        width: 100%;
+        min-height: 320px;
+    }
+
+    .image-card {
+        width: 270px;
+        min-height: 270px;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+    .cta {
+        margin: 60px 5%;
+    }
+
+    .cta h2 {
+        font-size: 29px;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .navbar {
+        justify-content: center;
+    }
+
+    .nav-actions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav-links {
+        gap: 13px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+    }
+}
