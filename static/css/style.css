@@ -525,3 +525,313 @@ a {
         width: 100%;
     }
 }
+
+/* ========================================
+   LIFELINK AI CHATBOT
+======================================== */
+
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    z-index: 9999;
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* Floating Button */
+
+.chatbot-toggle {
+    width: 65px;
+    height: 65px;
+    border: none;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(214, 40, 57, 0.35);
+    transition: 0.3s;
+}
+
+.chatbot-toggle:hover {
+    transform: scale(1.08);
+}
+
+/* Chat Window */
+
+.chatbot-window {
+    width: 360px;
+    height: min(600px, calc(100vh - 100px));
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    margin-bottom: 60px;
+    border: 1px solid #f0e5e5;
+}
+
+/* Header */
+
+.chatbot-header {
+    background: var(--primary);
+    color: white;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header h3 {
+    font-size: 17px;
+}
+
+.chatbot-header p {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+#chatbot-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* Messages Area */
+
+.chatbot-messages {
+    flex: 1;
+    padding: 18px;
+    overflow-y: auto;
+    background: #fffafa;
+    display: flex;
+    flex-direction: column;
+}
+
+.bot-message,
+.user-message {
+    max-width: 85%;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-radius: 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+.bot-message {
+    background: white;
+    color: var(--dark);
+    border: 1px solid #f0e5e5;
+    border-bottom-left-radius: 4px;
+}
+
+.user-message {
+    background: var(--primary);
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+}
+
+/* Message timestamps */
+.message-time {
+    display: block;
+    font-size: 10px;
+    margin-top: 6px;
+    opacity: 0.65;
+    text-align: right;
+}
+
+/* User timestamp */
+.user-message .message-time {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Bot timestamp */
+.bot-message .message-time {
+    color: #888;
+}
+
+/* Input Area */
+
+.chatbot-input {
+    display: flex;
+    gap: 10px;
+    padding: 14px;
+    background: white;
+    border-top: 1px solid #f0e5e5;
+}
+
+.chatbot-input input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #e5dada;
+    border-radius: 10px;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.chatbot-input input:focus {
+    border-color: var(--primary);
+}
+
+.chatbot-input button {
+    width: 42px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.chatbot-input button:hover {
+    background: var(--primary-dark);
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 480px) {
+
+    .chatbot-container {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .chatbot-window {
+        width: calc(100vw - 30px);
+        height: min(500px, 70vh);
+    }
+
+    .chatbot-toggle {
+        width: 58px;
+        height: 58px;
+    }
+}
+
+/* LifeLink AI typing indicator */
+.typing-indicator {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    margin: 4px 0 0 0;
+    width: fit-content;
+    flex-shrink: 0;
+}
+
+.typing-indicator span {
+    width: 7px;
+    height: 7px;
+    background: #d9253f;
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typingBounce {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+    30% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+}
+
+/* Chat message layout */
+.bot-message,
+.user-message {
+    max-width: 85%;
+    width: fit-content;
+    padding: 10px 12px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+/* AI messages stay on the left */
+.bot-message {
+    align-self: flex-start;
+}
+
+/* User messages stay on the right */
+.user-message {
+    align-self: flex-end;
+}
+
+/* AI Markdown formatting */
+.bot-message p {
+    margin: 4px 0;
+}
+
+.bot-message ul,
+.bot-message ol {
+    padding-left: 18px;
+    margin: 6px 0;
+}
+
+.bot-message li {
+    margin-bottom: 5px;
+}
+
+.bot-message h1,
+.bot-message h2,
+.bot-message h3,
+.bot-message h4 {
+    margin: 8px 0 5px;
+    font-size: 14px;
+}
+
+.bot-message strong {
+    font-weight: 700;
+}
+
+/* AI Markdown formatting */
+.bot-message p {
+    margin: 4px 0;
+}
+
+.bot-message ul,
+.bot-message ol {
+    padding-left: 18px;
+    margin: 6px 0;
+}
+
+.bot-message li {
+    margin-bottom: 5px;
+}
+
+.bot-message h1,
+.bot-message h2,
+.bot-message h3,
+.bot-message h4 {
+    margin: 8px 0 5px;
+    font-size: 14px;
+}
+
+.bot-message strong {
+    font-weight: 700;
+}
