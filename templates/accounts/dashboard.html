@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}My Dashboard | LifeLink{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-section">
+
+    <div class="dashboard-welcome">
+        <span class="hero-label">LIFELINK MEMBER</span>
+        <h1>Welcome, {{ request.user.username }}!</h1>
+        <p>What would you like to do today?</p>
+    </div>
+
+    <div class="dashboard-options">
+
+        <div class="dashboard-card">
+            <div class="dashboard-icon">❤️</div>
+            <h2>Donate Blood</h2>
+            <p>
+                Become a blood donor, manage your donor profile
+                and help someone in need.
+            </p>
+            <a href="{% url 'register_donor' %}" class="dashboard-btn">
+                Continue as Donor →
+            </a>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="dashboard-icon">🩸</div>
+            <h2>Request Blood</h2>
+            <p>
+                Create your patient profile and request blood
+                when you or someone needs it.
+            </p>
+            <a href="{% url 'register_patient' %}" class="dashboard-btn">
+                Request Blood →
+            </a>
+        </div>
+
+    </div>
+
+    <div class="dashboard-logout">
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">
+                Logout
+            </button>
+        </form>
+    </div>
+
+</section>
+
+{% endblock %}

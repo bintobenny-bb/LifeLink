@@ -22,8 +22,7 @@ class User(AbstractUser):
 
     class Role(models.TextChoices):
         ADMIN = "ADMIN", "Administrator"
-        DONOR = "DONOR", "Blood Donor"
-        PATIENT = "PATIENT", "Patient"
+        INDIVIDUAL = "INDIVIDUAL", "Individual"
         HOSPITAL = "HOSPITAL", "Hospital"
 
     email = models.EmailField(unique=True)
@@ -31,7 +30,7 @@ class User(AbstractUser):
     role = models.CharField(
         max_length=20,
         choices=Role.choices,
-        default=Role.PATIENT
+        default=Role.INDIVIDUAL
     )
 
     phone_number = models.CharField(

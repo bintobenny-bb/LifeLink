@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Donor Dashboard | LifeLink{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-section">
+
+    <div class="dashboard-welcome">
+        <span class="hero-label">DONOR DASHBOARD</span>
+        <h1>Welcome, {{ request.user.username }}!</h1>
+        <p>Thank you for being part of the LifeLink donor community.</p>
+    </div>
+
+    <div class="dashboard-options">
+
+        <div class="dashboard-card">
+            <div class="dashboard-icon">🩸</div>
+            <h2>Your Blood Group</h2>
+            <p>
+                Your registered blood group is
+                <strong>{{ donor.blood_group }}</strong>.
+            </p>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="dashboard-icon">📍</div>
+            <h2>Your Location</h2>
+            <p>
+                {{ donor.city }}, {{ donor.district }},
+                {{ donor.state }} - {{ donor.postal_code }}
+            </p>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="dashboard-icon">❤️</div>
+            <h2>Donation Availability</h2>
+            <p>
+                {% if donor.is_available %}
+                You are currently marked as available.
+                {% else %}
+                You are currently marked as unavailable.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="dashboard-icon">👤</div>
+            <h2>Donor Profile</h2>
+            <p>Your donor profile has been successfully registered with LifeLink.</p>
+        </div>
+
+    </div>
+
+    <div class="dashboard-logout">
+        <a href="{% url 'dashboard' %}" class="dashboard-btn">
+            Back to Main Dashboard
+        </a>
+    </div>
+
+</section>
+
+{% endblock %}

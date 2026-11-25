@@ -19,3 +19,16 @@ def get_available_inventory():
     )
 
     return list(inventory)
+
+def get_inventory_overview():
+    inventory = BloodInventory.objects.values(
+        "blood_group",
+        "component",
+        "inventory_status",
+        "testing_status",
+        "units_available",
+        "expiry_date",
+        "hospital__hospital_name"
+    )
+
+    return list(inventory)

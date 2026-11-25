@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Patient Dashboard | LifeLink{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-section">
+
+    <div class="dashboard-welcome">
+        <span class="hero-label">PATIENT DASHBOARD</span>
+        <h1>Welcome, {{ request.user.username }}!</h1>
+        <p>Your LifeLink patient profile is ready.</p>
+    </div>
+
+    <div class="dashboard-options">
+
+        <div class="dashboard-card">
+            <div class="dashboard-icon">👤</div>
+            <h2>Patient Profile</h2>
+            <p>Your patient profile has been successfully registered with LifeLink.</p>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="dashboard-icon">📍</div>
+            <h2>Your Location</h2>
+            <p>
+                {{ patient.city }}, {{ patient.district }},
+                {{ patient.state }} - {{ patient.postal_code }}
+            </p>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="dashboard-icon">📞</div>
+            <h2>Emergency Contact</h2>
+            <p>
+                {{ patient.emergency_contact_name }}<br>
+                {{ patient.emergency_contact_phone }}
+            </p>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="dashboard-icon">🩸</div>
+            <h2>Blood Request Services</h2>
+            <p>You can use LifeLink to proceed with blood request services.</p>
+        </div>
+
+    </div>
+
+    <div class="dashboard-logout">
+        <a href="{% url 'dashboard' %}" class="dashboard-btn">
+            Back to Main Dashboard
+        </a>
+    </div>
+
+</section>
+
+{% endblock %}
