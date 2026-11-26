@@ -1100,3 +1100,226 @@ a {
     }
 
 }
+
+/* ========================================
+   HOSPITAL VERIFICATION PENDING PAGE
+======================================== */
+
+.verification-section {
+    min-height: 680px;
+    padding: 75px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #fff7f7, #fff0f1);
+}
+
+.verification-card {
+    width: 100%;
+    max-width: 650px;
+    padding: 45px;
+    background: #ffffff;
+    border: 1px solid #f1dddd;
+    border-radius: 22px;
+    box-shadow: 0 15px 45px rgba(40, 20, 20, 0.07);
+    text-align: center;
+}
+
+.verification-icon {
+    width: 85px;
+    height: 85px;
+    margin: 0 auto 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff0dc;
+    border-radius: 24px;
+    font-size: 38px;
+}
+
+.verification-label {
+    display: inline-block;
+    padding: 9px 18px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    background: #ffe8eb;
+    color: #d62839;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.verification-card h1 {
+    margin: 10px 0 14px;
+    color: #17212f;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.verification-description {
+    max-width: 490px;
+    margin: 0 auto 24px;
+    color: #657080;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.verification-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    margin-bottom: 30px;
+    border-radius: 30px;
+    background: #fff5e5;
+    color: #a76612;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #e8a23a;
+    box-shadow: 0 0 0 4px rgba(232, 162, 58, 0.15);
+}
+
+.hospital-info-card {
+    padding: 24px;
+    margin-bottom: 22px;
+    border: 1px solid #f0e5e5;
+    border-radius: 14px;
+    background: #fffafa;
+    text-align: left;
+}
+
+.hospital-info-card h3 {
+    margin-bottom: 18px;
+    color: #17212f;
+    font-size: 17px;
+}
+
+.hospital-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 13px 0;
+    border-bottom: 1px solid #f0e8e8;
+    font-size: 14px;
+}
+
+.hospital-info-row:last-child {
+    border-bottom: none;
+}
+
+.hospital-info-row span {
+    color: #75808d;
+}
+
+.hospital-info-row strong {
+    color: #17212f;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.hospital-info-row .pending-text {
+    color: #d28a20;
+}
+
+.verification-notice {
+    display: flex;
+    gap: 14px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    background: #f0f6ff;
+    text-align: left;
+}
+
+.notice-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #dceaff;
+    color: #2764a5;
+    font-weight: 800;
+}
+
+.verification-notice strong {
+    color: #244b78;
+    font-size: 14px;
+}
+
+.verification-notice p {
+    margin-top: 7px;
+    color: #526b86;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.verification-logout {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 9px;
+    background: #d62839;
+    color: white;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.verification-logout:hover {
+    background: #ad1728;
+    transform: translateY(-2px);
+}
+
+.verification-footer {
+    margin-top: 25px;
+    color: #929ba7;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+    .verification-section {
+        padding: 40px 15px;
+    }
+
+    .verification-card {
+        padding: 28px 20px;
+    }
+
+    .verification-card h1 {
+        font-size: 25px;
+    }
+
+    .hospital-info-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .hospital-info-row strong {
+        text-align: left;
+    }
+}
+
+/* Hospital Registration Rejected Status */
+
+.rejected-status {
+    background: #fff0f0;
+    color: #b42332;
+}
+
+.rejected-dot {
+    background: #d62839;
+    box-shadow: 0 0 0 4px rgba(214, 40, 57, 0.12);
+}

@@ -42,6 +42,23 @@ class HospitalProfile(models.Model):
     district = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=10)
+    latitude = models.DecimalField(
+        max_digits=9,
+        decimal_places=6,
+        null=True,
+        blank=True
+    )
+    longitude = models.DecimalField(
+        max_digits=9,
+        decimal_places=6,
+        null=True,
+        blank=True
+    )
+    registration_certificate = models.FileField(
+        upload_to="hospital_documents/",
+        null=True,
+        blank=True
+    )
 
     verification_status = models.CharField(
         max_length=20,

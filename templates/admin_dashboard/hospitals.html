@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLink | Hospital Management</title>
+
+    <link rel="stylesheet" href="{% static 'css/admin-dashboard.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="admin-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="brand-icon">+</span>
+                <span>LifeLink</span>
+            </div>
+
+            <div class="sidebar-label">MAIN MENU</div>
+
+            <nav class="sidebar-nav">
+                <a href="{% url 'admin_dashboard' %}" class="nav-link">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Overview</span>
+                </a>
+
+                <a href="{% url 'hospital_management' %}" class="nav-link active">
+                    <i class="fa-solid fa-hospital"></i>
+                    <span>Hospitals</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Users</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-hand-holding-medical"></i>
+                    <span>Donors</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-user-injured"></i>
+                    <span>Patients</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span>Blood Inventory</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-file-medical"></i>
+                    <span>Blood Requests</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="/admin/" class="nav-link">
+                    <i class="fa-solid fa-gears"></i>
+                    <span>Django Admin</span>
+                </a>
+
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link logout-link">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </button>
+                </form>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1>Hospital Management</h1>
+                    <p>Manage registered hospitals and verification requests.</p>
+                </div>
+
+                <div class="admin-profile">
+                    <div class="profile-avatar">
+                        {{ request.user.username|first|upper }}
+                    </div>
+                    <div>
+                        <strong>{{ request.user.username }}</strong>
+                        <small>Administrator</small>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Statistics -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon red">
+                        <i class="fa-solid fa-hospital"></i>
+                    </div>
+                    <div>
+                        <p>Total Hospitals</p>
+                        <h2>{{ total_hospitals }}</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div>
+                        <p>Pending Verification</p>
+                        <h2>{{ pending_hospitals }}</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div>
+                        <p>Verified Hospitals</p>
+                        <h2>{{ verified_hospitals }}</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <div>
+                        <p>Rejected Hospitals</p>
+                        <h2>{{ rejected_hospitals }}</h2>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Hospital Listing -->
+            <section class="hospital-management-card">
+
+                <div class="management-header">
+                    <div>
+                        <h2>Registered Hospitals</h2>
+                        <p>Review and manage hospital registrations.</p>
+                    </div>
+                </div>
+
+                <!-- Search -->
+                <form method="GET" class="hospital-search">
+                    <div class="search-input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" name="q" value="{{ search_query }}"
+                            placeholder="Search hospital name or registration number...">
+                    </div>
+
+                    <button type="submit" class="search-button">
+                        Search
+                    </button>
+
+                    {% if search_query %}
+                    <a href="{% url 'hospital_management' %}" class="clear-search">
+                        Clear
+                    </a>
+                    {% endif %}
+                </form>
+
+                <!-- Table -->
+                <div class="hospital-table-wrapper">
+                    <table class="hospital-table">
+                        <thead>
+                            <tr>
+                                <th>Hospital Name</th>
+                                <th>Registration Number</th>
+                                <th>Location</th>
+                                <th>Hospital Type</th>
+                                <th>Status</th>
+                                <th>Registered On</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for hospital in hospitals %}
+                            <tr>
+                                <td>
+                                    <strong>{{ hospital.hospital_name }}</strong>
+                                </td>
+
+                                <td>{{ hospital.registration_number }}</td>
+
+                                <td>
+                                    {{ hospital.city }}, {{ hospital.district }}
+                                </td>
+
+                                <td>{{ hospital.get_hospital_type_display }}</td>
+
+                                <td>
+                                    {% if hospital.verification_status == "VERIFIED" %}
+                                    <span class="hospital-status verified">
+                                        Verified
+                                    </span>
+                                    {% elif hospital.verification_status == "PENDING" %}
+                                    <span class="hospital-status pending">
+                                        Pending
+                                    </span>
+                                    {% else %}
+                                    <span class="hospital-status rejected">
+                                        Rejected
+                                    </span>
+                                    {% endif %}
+                                </td>
+
+                                <td>{{ hospital.created_at|date:"d M Y" }}</td>
+
+                                <td>
+                                    {% if hospital.verification_status != "VERIFIED" %}
+                                    <form method="POST"
+                                        action="{% url 'update_hospital_verification' hospital.id 'VERIFIED' %}"
+                                        style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit">Approve</button>
+                                    </form>
+                                    {% endif %}
+
+                                    {% if hospital.verification_status != "REJECTED" %}
+                                    <form method="POST"
+                                        action="{% url 'update_hospital_verification' hospital.id 'REJECTED' %}"
+                                        style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit">Reject</button>
+                                    </form>
+                                    {% endif %}
+                                </td>
+                            </tr>
+
+                            {% empty %}
+                            <tr>
+                                <td colspan="6" class="empty-table">
+                                    No hospitals found.
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+</body>
+
+</html>

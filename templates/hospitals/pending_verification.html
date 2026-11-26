@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Verification Pending | LifeLink{% endblock %}
+
+{% block content %}
+
+<section class="verification-section">
+
+    <div class="verification-card">
+
+        <div class="verification-icon">
+            <span>⏳</span>
+        </div>
+
+
+        <span class="verification-label">HOSPITAL ACCOUNT</span>
+
+        {% if hospital.verification_status == "REJECTED" %}
+
+        <h1>Registration Rejected</h1>
+
+        <p class="verification-description">
+            Unfortunately, your hospital registration was not approved.
+            Please contact the LifeLink administrator for further information.
+        </p>
+
+        <div class="verification-status rejected-status">
+            <span class="status-dot rejected-dot"></span>
+            <span>Registration Rejected</span>
+        </div>
+
+        {% else %}
+
+        <h1>Verification in Progress</h1>
+
+        <p class="verification-description">
+            Thank you for joining LifeLink. Your hospital registration
+            has been successfully submitted and is currently awaiting
+            administrator review.
+        </p>
+
+        <div class="verification-status">
+            <span class="status-dot"></span>
+            <span>Pending Verification</span>
+        </div>
+
+        {% endif %}
+
+
+        <div class="hospital-info-card">
+
+            <h3>Registration Details</h3>
+
+            <div class="hospital-info-row">
+                <span>Hospital Name</span>
+                <strong>{{ hospital.hospital_name }}</strong>
+            </div>
+
+            <div class="hospital-info-row">
+                <span>Registration Number</span>
+                <strong>{{ hospital.registration_number }}</strong>
+            </div>
+
+            <div class="hospital-info-row">
+                <span>Account Status</span>
+                <strong class="pending-text">
+                    {{ hospital.get_verification_status_display }}
+                </strong>
+            </div>
+
+        </div>
+
+        <div class="verification-notice">
+            <span class="notice-icon">ℹ</span>
+            <div>
+                <strong>What happens next?</strong>
+                <p>
+                    Our administrator will review your hospital details.
+                    Once approved, you can access your hospital dashboard,
+                    manage blood inventory and receive blood requests.
+                </p>
+            </div>
+        </div>
+
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+
+            <button type="submit" class="verification-logout">
+                Logout
+            </button>
+        </form>
+
+        <p class="verification-footer">
+            Thank you for being part of LifeLink.
+            <br>
+            Connecting Donors. Saving Lives.
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

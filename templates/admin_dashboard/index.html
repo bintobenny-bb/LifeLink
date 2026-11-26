@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLink | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="{% static 'css/admin-dashboard.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <span class="brand-icon">+</span>
+                <span>LifeLink</span>
+            </div>
+
+            <div class="sidebar-label">MAIN MENU</div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-link active">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Overview</span>
+                </a>
+
+                <a href="{% url 'hospital_management' %}" class="nav-link">
+                    <i class="fa-solid fa-hospital"></i>
+                    <span>Hospitals</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Users</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-hand-holding-medical"></i>
+                    <span>Donors</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-user-injured"></i>
+                    <span>Patients</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span>Blood Inventory</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-file-medical"></i>
+                    <span>Blood Requests</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="/admin/" class="nav-link">
+                    <i class="fa-solid fa-gears"></i>
+                    <span>Django Admin</span>
+                </a>
+
+                <a href="{% url 'logout' %}" class="nav-link logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1>Dashboard Overview</h1>
+                    <p>Welcome back, {{ request.user.username }}!</p>
+                </div>
+
+                <div class="admin-profile">
+                    <div class="profile-avatar">
+                        {{ request.user.username|first|upper }}
+                    </div>
+                    <div>
+                        <strong>{{ request.user.username }}</strong>
+                        <small>Administrator</small>
+                    </div>
+                </div>
+            </header>
+
+            <section class="welcome-section">
+                <h2>Welcome to LifeLink Administration</h2>
+                <p>Manage hospitals, donors, patients and blood bank operations from one place.</p>
+            </section>
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon red">
+                        <i class="fa-solid fa-hospital"></i>
+                    </div>
+                    <div>
+                        <p>Registered Hospitals</p>
+                        <h2>{{ total_hospitals }}</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <p>Total Users</p>
+                        <h2>{{ total_users }}</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-hand-holding-medical"></i>
+                    </div>
+                    <div>
+                        <p>Registered Donors</p>
+                        <h2>{{ total_donors }}</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <div>
+                        <p>Blood Units Available</p>
+                        <h2>{{ available_units }}</h2>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="dashboard-placeholder">
+                <h2>Management Overview</h2>
+                <p>Hospital approvals, inventory monitoring and blood request management will appear here.</p>
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>
